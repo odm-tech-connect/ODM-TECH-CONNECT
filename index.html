@@ -39,6 +39,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,21,34,.94);backdrop-fi
 .nav-cta:hover,.btn:hover{background:#a6e8ff;transform:translateY(-2px)}
 .btn-outline{background:transparent;color:var(--white);border-color:rgba(88,205,245,.65)}
 .btn-outline:hover{background:rgba(88,205,245,.1);color:var(--blue)}
+.language-control{display:flex;align-items:center;gap:7px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--blue);font-size:13px;white-space:nowrap}.language-control select{max-width:118px;background:transparent;color:var(--white);border:0;font:600 12px inherit;outline:none}.language-control option{color:#071522;background:#fff}.goog-te-gadget{font-family:inherit!important;color:var(--muted)!important;font-size:0!important}.goog-te-gadget .goog-te-combo{margin:0!important;padding:5px 4px;background:#102a40;color:#f7fbff;border:0;font:600 12px Arial,sans-serif;max-width:125px}.goog-logo-link,.goog-te-gadget span{display:none!important}body{top:0!important}.goog-te-banner-frame{display:none!important}.skiptranslate iframe{display:none!important}
 .menu-toggle{display:none;border:1px solid var(--line);background:var(--panel);color:white;width:44px;height:42px;border-radius:8px;font-size:24px}
 .hero{position:relative;min-height:690px;display:flex;align-items:center;overflow:hidden;background:
  linear-gradient(90deg,rgba(4,14,24,.97) 0%,rgba(4,14,24,.84) 47%,rgba(4,14,24,.35) 100%),
@@ -120,7 +121,7 @@ footer{padding:38px 0 25px;border-top:1px solid var(--line);background:#050f19}
 .footer-links a{font-size:12px;color:var(--muted)}
 .footer-bottom{border-top:1px solid var(--line);padding-top:18px;display:flex;justify-content:space-between;gap:20px;color:#8fa4b5;font-size:11px}
 @media(max-width:900px){
- .navlinks{display:none;position:absolute;top:81px;left:0;right:0;background:#071522;padding:20px 24px 25px;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:16px}
+ .language-control{margin-left:auto}.navlinks{display:none;position:absolute;top:81px;left:0;right:0;background:#071522;padding:20px 24px 25px;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:16px}
  .navlinks.open{display:flex}.menu-toggle{display:block}.nav-cta{display:none}
  .hero{min-height:620px;background-position:58% center}
  .about-grid,.founder,.contact-layout{grid-template-columns:1fr}
@@ -150,7 +151,8 @@ footer{padding:38px 0 25px;border-top:1px solid var(--line);background:#050f19}
   <a class="brand" href="#accueil" aria-label="ODM TECH CONNECT, accueil">
    <div><div class="brand-mark">ODM<span>.</span></div><div class="brand-caption">TECH CONNECT</div></div>
   </a>
-  <button class="menu-toggle" id="menuToggle" type="button" aria-label="Ouvrir le menu" aria-controls="navLinks" aria-expanded="false">☰</button>
+  <div class="language-control" aria-label="Choisir la langue"><span aria-hidden="true">🌐</span><div id="google_translate_element"></div></div>
+ <button class="menu-toggle" id="menuToggle" type="button" aria-label="Ouvrir le menu" aria-controls="navLinks" aria-expanded="false">☰</button>
   <nav class="navlinks" id="navLinks" aria-label="Navigation principale">
    <a href="#accueil">Accueil</a><a href="#apropos">À propos</a><a href="#expertise">Expertises</a>
    <a href="#representation">Représentation</a><a href="#methode">Notre approche</a><a href="#partenaires">Partenariats</a><a href="#opportunites">Opportunités</a><a href="#fondateur">Le fondateur</a><a href="#contact">Contact</a>
@@ -274,6 +276,24 @@ footer{padding:38px 0 25px;border-top:1px solid var(--line);background:#050f19}
 </div></footer>
 
 <script>
+function googleTranslateElementInit(){
+  new google.translate.TranslateElement({
+    pageLanguage:'fr',
+    includedLanguages:'en',
+    autoDisplay:false,
+    layout:google.translate.TranslateElement.InlineLayout.SIMPLE
+  },'google_translate_element');
+}
+(function(){
+  const lang=(navigator.languages && navigator.languages[0] || navigator.language || 'fr').toLowerCase();
+  const prefersEnglish=lang.startsWith('en');
+  const hasChoice=document.cookie.split(';').some(c=>c.trim().startsWith('googtrans='));
+  if(prefersEnglish && !hasChoice){
+    document.cookie='googtrans=/fr/en;path=/';
+    document.cookie='googtrans=/fr/en;path=/;domain='+location.hostname;
+    location.reload();
+  }
+})();
 const toggle=document.getElementById('menuToggle');
 const links=document.getElementById('navLinks');
 toggle.addEventListener('click',()=>{
@@ -287,5 +307,6 @@ links.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
  toggle.textContent='☰';
 }));
 </script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
 </body>
 </html>
