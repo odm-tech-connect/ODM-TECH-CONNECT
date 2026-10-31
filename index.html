@@ -33,13 +33,13 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,21,34,.94);backdrop-fi
 .brand-mark span{color:var(--blue)}
 .brand-caption{font-size:9px;letter-spacing:3.2px;font-weight:800;color:#d9e9f4;margin-top:5px}
 .navlinks{display:flex;align-items:center;gap:24px}
-.navlinks a{font-size:12px;font-weight:650;color:#d6e3ed;transition:.2s}
+.navlinks a{font-size:14px;font-weight:650;color:#d6e3ed;transition:.2s}
 .navlinks a:hover{color:var(--blue)}
 .nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 18px;border-radius:7px;background:var(--blue);color:#061522;font-weight:800;font-size:13px;border:1px solid var(--blue);transition:.2s}
 .nav-cta:hover,.btn:hover{background:#a6e8ff;transform:translateY(-2px)}
 .btn-outline{background:transparent;color:var(--white);border-color:rgba(88,205,245,.65)}
 .btn-outline:hover{background:rgba(88,205,245,.1);color:var(--blue)}
-.language-control{display:flex;align-items:center;gap:7px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--blue);font-size:13px;white-space:nowrap}.language-control select{max-width:118px;background:transparent;color:var(--white);border:0;font:600 12px inherit;outline:none}.language-control option{color:#071522;background:#fff}.goog-te-gadget{font-family:inherit!important;color:var(--muted)!important;font-size:0!important}.goog-te-gadget .goog-te-combo{margin:0!important;padding:5px 4px;background:#102a40;color:#f7fbff;border:0;font:600 12px Arial,sans-serif;max-width:125px}.goog-logo-link,.goog-te-gadget span{display:none!important}body{top:0!important}.goog-te-banner-frame{display:none!important}.skiptranslate iframe{display:none!important}
+.language-control{display:flex;align-items:center;gap:7px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--blue);font-size:13px;white-space:nowrap}.language-control select{max-width:118px;background:transparent;color:var(--white);border:0;font:600 13px Arial,sans-serif;outline:none;cursor:pointer}.language-control option{color:#071522;background:#fff}.goog-te-gadget{font-family:inherit!important;color:var(--muted)!important;font-size:0!important}.goog-te-gadget .goog-te-combo{margin:0!important;padding:5px 4px;background:#102a40;color:#f7fbff;border:0;font:600 12px Arial,sans-serif;max-width:125px}.goog-logo-link,.goog-te-gadget span{display:none!important}body{top:0!important}.goog-te-banner-frame{display:none!important}.skiptranslate iframe{display:none!important}
 .menu-toggle{display:none;border:1px solid var(--line);background:var(--panel);color:white;width:44px;height:42px;border-radius:8px;font-size:24px}
 .hero{position:relative;min-height:690px;display:flex;align-items:center;overflow:hidden;background:
  linear-gradient(90deg,rgba(4,14,24,.97) 0%,rgba(4,14,24,.84) 47%,rgba(4,14,24,.35) 100%),
@@ -121,8 +121,8 @@ footer{padding:38px 0 25px;border-top:1px solid var(--line);background:#050f19}
 .footer-links a{font-size:12px;color:var(--muted)}
 .footer-bottom{border-top:1px solid var(--line);padding-top:18px;display:flex;justify-content:space-between;gap:20px;color:#8fa4b5;font-size:11px}
 @media(max-width:900px){
- .language-control{margin-left:auto}.navlinks{display:none;position:absolute;top:81px;left:0;right:0;background:#071522;padding:20px 24px 25px;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:16px}
- .navlinks.open{display:flex}.menu-toggle{display:block}.nav-cta{display:none}
+ .language-control{margin-left:auto;flex:0 0 auto}.navlinks{display:none;position:absolute;top:81px;left:0;right:0;background:#071522;padding:24px 28px 28px;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;max-height:calc(100vh - 82px);overflow-y:auto;box-shadow:0 18px 30px #0007}
+ .navlinks.open{display:flex}.navlinks a{display:block;width:100%;padding:13px 4px;font-size:16px;border-bottom:1px solid var(--line)}.menu-toggle{display:block;flex:0 0 44px}.nav-cta{display:none}
  .hero{min-height:620px;background-position:58% center}
  .about-grid,.founder,.contact-layout{grid-template-columns:1fr}
  .about-visual{order:2}.about-visual img{height:330px}
@@ -131,7 +131,7 @@ footer{padding:38px 0 25px;border-top:1px solid var(--line);background:#050f19}
 }
 @media(max-width:600px){
  .container{width:min(var(--max),calc(100% - 36px))}
- .navbar{height:74px}.brand-mark{font-size:29px}.brand-caption{font-size:8px}
+ .navbar{height:74px;gap:10px}.brand{min-width:0;gap:7px}.brand-mark{font-size:27px}.brand-caption{font-size:7px;letter-spacing:2px}.language-control{padding:6px 7px;gap:4px}.language-control select{font-size:12px;max-width:82px}
  .navlinks{top:73px}
  .hero{min-height:610px}.hero-inner{padding:80px 0 90px}.hero h1{letter-spacing:-1.5px}
  section{padding:72px 0}
@@ -151,7 +151,7 @@ footer{padding:38px 0 25px;border-top:1px solid var(--line);background:#050f19}
   <a class="brand" href="#accueil" aria-label="ODM TECH CONNECT, accueil">
    <div><div class="brand-mark">ODM<span>.</span></div><div class="brand-caption">TECH CONNECT</div></div>
   </a>
-  <div class="language-control" aria-label="Choisir la langue"><span aria-hidden="true">🌐</span><div id="google_translate_element"></div></div>
+  <div class="language-control" aria-label="Choisir la langue"><span aria-hidden="true">🌐</span><select id="siteLanguage" aria-label="Langue du site"><option value="fr">Français</option><option value="en">English</option></select></div><div id="google_translate_element" hidden></div>
  <button class="menu-toggle" id="menuToggle" type="button" aria-label="Ouvrir le menu" aria-controls="navLinks" aria-expanded="false">☰</button>
   <nav class="navlinks" id="navLinks" aria-label="Navigation principale">
    <a href="#accueil">Accueil</a><a href="#apropos">À propos</a><a href="#expertise">Expertises</a>
@@ -278,9 +278,7 @@ footer{padding:38px 0 25px;border-top:1px solid var(--line);background:#050f19}
 <script>
 function googleTranslateElementInit(){
   new google.translate.TranslateElement({
-    pageLanguage:'fr',
-    includedLanguages:'en',
-    autoDisplay:false,
+    pageLanguage:'fr', includedLanguages:'en', autoDisplay:false,
     layout:google.translate.TranslateElement.InlineLayout.SIMPLE
   },'google_translate_element');
 }
@@ -291,9 +289,23 @@ function googleTranslateElementInit(){
   if(prefersEnglish && !hasChoice){
     document.cookie='googtrans=/fr/en;path=/';
     document.cookie='googtrans=/fr/en;path=/;domain='+location.hostname;
-    location.reload();
   }
 })();
+const languageSelect=document.getElementById('siteLanguage');
+function currentSiteLanguage(){
+  const match=document.cookie.split(';').map(v=>v.trim()).find(v=>v.startsWith('googtrans='));
+  return match && match.split('=')[1].endsWith('/en') ? 'en' : 'fr';
+}
+if(languageSelect){
+  languageSelect.value=currentSiteLanguage();
+  languageSelect.addEventListener('change',()=>{
+    const target=languageSelect.value;
+    const value=target==='en'?'/fr/en':'/fr/fr';
+    document.cookie='googtrans='+value+';path=/';
+    document.cookie='googtrans='+value+';path=/;domain='+location.hostname;
+    location.reload();
+  });
+}
 const toggle=document.getElementById('menuToggle');
 const links=document.getElementById('navLinks');
 toggle.addEventListener('click',()=>{
