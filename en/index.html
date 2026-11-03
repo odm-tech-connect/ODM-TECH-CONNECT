@@ -41,6 +41,25 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
 .section-photo{display:block;width:100%;max-width:900px;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin:24px 0}
 .founder-photo{display:block;width:100%;max-width:340px;aspect-ratio:4/5;object-fit:cover;object-position:center;border-radius:12px;margin:20px 0}
 
+
+/* ODM business network and matchmaking */
+.odm-network,.odm-match{padding:60px 0;border-bottom:1px solid #254258}
+.odm-wrap{width:min(92%,1100px);margin:auto}
+.odm-filters,.odm-tabs{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
+.odm-filter,.odm-tab{border:1px solid #58cdf5;background:transparent;color:#58cdf5;padding:10px 15px;border-radius:7px;font-weight:bold;cursor:pointer}
+.odm-tab.active{background:#58cdf5;color:#071522}
+.odm-empty{background:#102a40;border:1px solid #254258;border-radius:12px;padding:25px;color:#b4c5d3}
+.odm-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}
+.odm-field{display:flex;flex-direction:column;gap:6px}
+.odm-field.full{grid-column:1/-1}
+.odm-field label{color:#f7fbff;font-weight:bold}
+.odm-field input,.odm-field select,.odm-field textarea{width:100%;padding:12px;background:#102a40;color:#f7fbff;border:1px solid #254258;border-radius:7px;font:inherit}
+.odm-field textarea{min-height:130px;resize:vertical}
+.odm-consent{grid-column:1/-1;color:#b4c5d3}
+.odm-consent input{margin-right:8px}
+.odm-feedback{color:#a6e8ff}
+@media(max-width:650px){.odm-form{grid-template-columns:1fr}.odm-field.full,.odm-consent{grid-column:auto}}
+
 </style>
 </head>
 <body>
@@ -106,6 +125,46 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
 <p>Amadou Diallo is the initiator of ODM TECH CONNECT. Through this initiative, he aims to build professional relationships with international companies and develop commercial representation and digital support activities in West Africa.</p>
 <p>The project is at an early development stage and is seeking its first official mandates. No representation relationship is claimed without prior written authorization.</p>
 </div></section>
+
+<section class="odm-network" id="business-network">
+<div class="odm-wrap">
+<div class="kicker">Africa–International Network</div>
+<h2>A bridge between <span class="accent">global and African businesses.</span></h2>
+<p>ODM TECH CONNECT aims to facilitate connections between manufacturers, suppliers, distributors and African businesses. Guinea and West Africa are our starting point.</p>
+<div class="odm-filters" aria-label="Business sectors">
+<button class="odm-filter" type="button">All sectors</button>
+<button class="odm-filter" type="button">Mining &amp; Energy</button>
+<button class="odm-filter" type="button">Technology &amp; Digital</button>
+<button class="odm-filter" type="button">Agriculture &amp; Agrifood</button>
+<button class="odm-filter" type="button">Logistics &amp; Transport</button>
+</div>
+<div class="odm-empty"><strong>Directory currently being developed.</strong><br>Businesses will be listed only after their information has been verified and their permission obtained. Do you represent a business? Submit your enquiry below.</div>
+</div>
+</section>
+<section class="odm-match" id="business-matchmaking">
+<div class="odm-wrap">
+<div class="kicker">Business matchmaking</div>
+<h2>Let's <span class="accent">develop connections.</span></h2>
+<p>Are you an international company looking to explore Africa, or an African business seeking international partners? Tell us what you need.</p>
+<div class="odm-tabs" role="tablist" aria-label="Choose your business profile">
+<button class="odm-tab active" type="button" data-kind="international" role="tab" aria-selected="true">International company</button>
+<button class="odm-tab" type="button" data-kind="african" role="tab" aria-selected="false">African company</button>
+</div>
+<form class="odm-form" id="odmMatchForm">
+<input type="hidden" name="Profile" id="odmType" value="International company">
+<div class="odm-field"><label for="odmCompany">Company name *</label><input id="odmCompany" name="Company" required></div>
+<div class="odm-field"><label for="odmCountry" id="odmCountryLabel">Country of origin *</label><input id="odmCountry" name="Country" required></div>
+<div class="odm-field"><label for="odmContact">Contact person's name *</label><input id="odmContact" name="Contact" required></div>
+<div class="odm-field"><label for="odmEmail">Business email *</label><input id="odmEmail" name="Email" type="email" required></div>
+<div class="odm-field"><label for="odmSector">Sector *</label><select id="odmSector" name="Sector" required><option value="">Choose</option><option>Mining &amp; Energy</option><option>Technology &amp; Digital</option><option>Agriculture &amp; Agrifood</option><option>Logistics &amp; Transport</option><option>Other</option></select></div>
+<div class="odm-field"><label for="odmNeed" id="odmNeedLabel">Type of collaboration *</label><select id="odmNeed" name="Collaboration" required><option value="">Choose</option><option>Official commercial representation</option><option>Business introductions</option><option>Market development</option></select></div>
+<div class="odm-field full"><label for="odmMessage">Tell us about your company and your needs *</label><textarea id="odmMessage" name="Message" required></textarea></div>
+<label class="odm-consent"><input type="checkbox" name="Consent" value="Yes" required> I agree that ODM TECH CONNECT may use this information to respond to my enquiry.</label>
+<div class="odm-field full"><button class="btn" type="submit">Prepare my enquiry</button><p class="odm-feedback" id="odmFeedback" aria-live="polite"></p></div>
+</form>
+</div>
+</section>
+
 <section id="contact"><div class="container">
 <div class="kicker">Professional contact</div><h2>Let's start a conversation. <span class="accent">Build the next step.</span></h2>
 <div class="card">
@@ -118,5 +177,46 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
 </div></div></section>
 </main>
 <footer>© 2026 ODM TECH CONNECT · Independent initiative in development · Guinea, West Africa</footer>
+<script>
+
+// ODM business matchmaking tabs
+const odmTabs = document.querySelectorAll('.odm-tab');
+const odmType = document.getElementById('odmType');
+const odmNeed = document.getElementById('odmNeed');
+const odmCountryLabel = document.getElementById('odmCountryLabel');
+const odmNeedLabel = document.getElementById('odmNeedLabel');
+
+odmTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    odmTabs.forEach(item => {
+      item.classList.remove('active');
+      item.setAttribute('aria-selected', 'false');
+    });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+
+    const african = tab.dataset.kind === 'african';
+    odmType.value = african ? 'African company' : 'International company';
+    odmCountryLabel.textContent = african ? 'Country in Africa *' : 'Country of origin *';
+    odmNeedLabel.textContent = african ? 'What are you looking for? *' : 'Type of collaboration *';
+
+    odmNeed.innerHTML = african
+      ? '<option value="">Choose</option><option>International supplier</option><option>Manufacturer</option><option>International business partner</option><option>Digital or commercial support</option>'
+      : '<option value="">Choose</option><option>Official commercial representation</option><option>Business introductions</option><option>Market development</option>';
+  });
+});
+
+document.getElementById('odmMatchForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const data = new FormData(this);
+  const body = Array.from(data.entries()).map(([key, value]) => key + ': ' + value).join('\n');
+  const subject = 'Business matchmaking enquiry - ODM TECH CONNECT';
+  document.getElementById('odmFeedback').textContent =
+    'Your email application will open. Please review and send your enquiry.';
+  window.location.href = 'mailto:odm-techconnect@gmail.com?subject=' +
+    encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+});
+
+</script>
 </body>
 </html>
