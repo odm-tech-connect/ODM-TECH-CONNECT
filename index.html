@@ -169,6 +169,75 @@ footer{padding:38px 0 25px;border-top:1px solid var(--line);background:#050f19}
 .odm-feedback{color:var(--blue2)}
 @media(max-width:650px){.odm-form{grid-template-columns:1fr}.odm-field.full,.odm-consent,.odm-feedback{grid-column:1}.odm-network,.odm-match{padding:55px 0}}
 
+
+/* ODM_DIVISIONS_VISUELLES_CSS_V1 */
+.division-section {
+  padding: 95px 0;
+  background: #071522;
+}
+.division-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 38px;
+}
+.division-card {
+  overflow: hidden;
+  border: 1px solid rgba(174,216,239,.18);
+  border-radius: 15px;
+  background: linear-gradient(145deg,#122d43,#0b2032);
+  transition: transform .25s ease, border-color .25s ease;
+}
+.division-card:hover {
+  transform: translateY(-5px);
+  border-color: #58cdf5;
+}
+.division-card img {
+  display: block;
+  width: 100%;
+  height: 215px;
+  object-fit: cover;
+}
+.division-card-content {
+  padding: 23px;
+}
+.division-number {
+  color: #58cdf5;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 2px;
+}
+.division-card h3 {
+  margin: 12px 0;
+  font-size: 21px;
+  color: #f7fbff;
+}
+.division-card p {
+  color: #b4c5d3;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.division-status {
+  display: inline-block;
+  margin-top: 17px;
+  padding: 6px 10px;
+  border: 1px solid rgba(88,205,245,.35);
+  border-radius: 5px;
+  color: #a6e8ff;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+@media(max-width:900px) {
+  .division-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:600px) {
+  .division-section { padding: 65px 0; }
+  .division-grid { grid-template-columns: 1fr; gap: 17px; }
+  .division-card img { height: 220px; }
+}
+
 </style>
 </head>
 <body>
@@ -181,7 +250,7 @@ footer{padding:38px 0 25px;border-top:1px solid var(--line);background:#050f19}
   <div class="language-control" aria-label="Choisir la langue"><span aria-hidden="true">🌐</span><select id="siteLanguage" aria-label="Langue du site"><option value="fr">Français</option><option value="en">English</option></select></div><div id="google_translate_element" hidden></div>
  <button class="menu-toggle" id="menuToggle" type="button" aria-label="Ouvrir le menu" aria-controls="navLinks" aria-expanded="false">☰</button>
   <nav class="navlinks" id="navLinks" aria-label="Navigation principale">
-   <a href="#accueil">Accueil</a><a href="#apropos">À propos</a><a href="#expertise">Expertises</a>
+   <a href="#accueil">Accueil</a><a href="#apropos">À propos</a><a href="#expertise">Expertises</a><a href="#divisions">Nos divisions</a>
    <a href="#representation">Représentation</a><a href="#methode">Notre approche</a><a href="#partenaires">Partenariats</a><a href="#opportunites">Opportunités</a><a href="#fondateur">Le fondateur</a><a href="#contact">Contact</a>
   </nav>
   <a class="nav-cta" href="#contact">Parlons ensemble ↗</a>
@@ -231,6 +300,85 @@ footer{padding:38px 0 25px;border-top:1px solid var(--line);background:#050f19}
   <article class="card"><div class="card-no">06 / COORDINATION</div><div class="card-icon">⌁</div><h3>Suivi des opportunités</h3><p>Assurer le suivi des demandes, coordonner les échanges et rendre compte des avancées selon le mandat convenu.</p></article>
  </div>
 </div></section>
+
+
+<!-- ODM_DIVISIONS_VISUELLES_V1 -->
+<section class="division-section" id="divisions">
+ <div class="container">
+  <div class="section-head">
+   <div class="kicker">Les pôles d'activité ODM</div>
+   <h2>Six divisions pour connecter les marchés et <span class="accent">développer les échanges.</span></h2>
+   <p class="section-lead">
+    ODM TECH CONNECT construit progressivement une plateforme de relations
+    commerciales et de services destinée aux entreprises de Guinée,
+    d'Afrique de l'Ouest et du reste du monde.
+   </p>
+  </div>
+  <div class="division-grid">
+
+   <article class="division-card">
+    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85" alt="Équipements électroniques et composants pour le commerce" loading="lazy" decoding="async">
+    <div class="division-card-content">
+     <span class="division-number">01 / MARKETPLACE</span>
+     <h3>ODM Marketplace</h3>
+     <p>Un espace destiné à mettre en relation acheteurs et fournisseurs, présenter des catalogues de produits et recueillir des demandes commerciales. Les fonctionnalités de la marketplace sont en préparation.</p>
+     <span class="division-status">Pôle en développement</span>
+    </div>
+   </article>
+
+   <article class="division-card">
+    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1000&q=85" alt="Professionnels réunis autour d'un projet commercial" loading="lazy" decoding="async">
+    <div class="division-card-content">
+     <span class="division-number">02 / BUSINESS</span>
+     <h3>ODM Business</h3>
+     <p>Représentation commerciale, prospection, recherche de partenaires et accompagnement des relations d'affaires, dans le respect des autorisations écrites et des accords conclus.</p>
+     <span class="division-status">Pôle en développement</span>
+    </div>
+   </article>
+
+   <article class="division-card">
+    <img src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=1000&q=85" alt="Transport maritime de marchandises et commerce international" loading="lazy" decoding="async">
+    <div class="division-card-content">
+     <span class="division-number">03 / TRADE</span>
+     <h3>ODM Trade</h3>
+     <p>Un pôle consacré au développement des échanges commerciaux, à l'import-export et à la distribution, selon les partenariats et les conditions convenus avec les entreprises.</p>
+     <span class="division-status">Pôle en développement</span>
+    </div>
+   </article>
+
+   <article class="division-card">
+    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000&q=85" alt="Entrepôt et organisation logistique de marchandises" loading="lazy" decoding="async">
+    <div class="division-card-content">
+     <span class="division-number">04 / LOGISTICS</span>
+     <h3>ODM Logistics</h3>
+     <p>Un pôle envisagé pour faciliter les échanges autour du transport, du stockage et de la coordination logistique avec des prestataires et partenaires qualifiés.</p>
+     <span class="division-status">Pôle en développement</span>
+    </div>
+   </article>
+
+   <article class="division-card">
+    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=85" alt="Équipe professionnelle travaillant avec des outils numériques" loading="lazy" decoding="async">
+    <div class="division-card-content">
+     <span class="division-number">05 / DIGITAL</span>
+     <h3>ODM Digital</h3>
+     <p>Accompagnement numérique, présence sur Internet, présentation professionnelle, outils digitaux et solutions destinées à soutenir le développement des entreprises.</p>
+     <span class="division-status">Pôle en développement</span>
+    </div>
+   </article>
+
+   <article class="division-card">
+    <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1000&q=85" alt="Professionnels échangeant dans un réseau international" loading="lazy" decoding="async">
+    <div class="division-card-content">
+     <span class="division-number">06 / GLOBAL NETWORK</span>
+     <h3>ODM Global Network</h3>
+     <p>Développement progressif d'un réseau de correspondants, de professionnels et de partenaires internationaux, avec vérification des informations et définition claire des collaborations.</p>
+     <span class="division-status">Pôle en développement</span>
+    </div>
+   </article>
+
+  </div>
+ </div>
+</section>
 
 <section id="representation"><div class="container">
  <div class="section-head"><div class="kicker">Notre modèle de représentation</div><h2>Un mandat clair. Des responsabilités <span class="accent">définies.</span></h2><p class="section-lead">ODM TECH CONNECT ne se positionne pas comme acheteur-revendeur. Nous recherchons des accords de représentation, d’agence commerciale indépendante ou d’apport d’affaires, selon les modèles acceptés par chaque entreprise.</p></div>

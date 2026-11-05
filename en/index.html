@@ -60,13 +60,82 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
 .odm-feedback{color:#a6e8ff}
 @media(max-width:650px){.odm-form{grid-template-columns:1fr}.odm-field.full,.odm-consent{grid-column:auto}}
 
+
+/* ODM_DIVISIONS_VISUELLES_CSS_V1 */
+.division-section {
+  padding: 95px 0;
+  background: #071522;
+}
+.division-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 38px;
+}
+.division-card {
+  overflow: hidden;
+  border: 1px solid rgba(174,216,239,.18);
+  border-radius: 15px;
+  background: linear-gradient(145deg,#122d43,#0b2032);
+  transition: transform .25s ease, border-color .25s ease;
+}
+.division-card:hover {
+  transform: translateY(-5px);
+  border-color: #58cdf5;
+}
+.division-card img {
+  display: block;
+  width: 100%;
+  height: 215px;
+  object-fit: cover;
+}
+.division-card-content {
+  padding: 23px;
+}
+.division-number {
+  color: #58cdf5;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 2px;
+}
+.division-card h3 {
+  margin: 12px 0;
+  font-size: 21px;
+  color: #f7fbff;
+}
+.division-card p {
+  color: #b4c5d3;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.division-status {
+  display: inline-block;
+  margin-top: 17px;
+  padding: 6px 10px;
+  border: 1px solid rgba(88,205,245,.35);
+  border-radius: 5px;
+  color: #a6e8ff;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+@media(max-width:900px) {
+  .division-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:600px) {
+  .division-section { padding: 65px 0; }
+  .division-grid { grid-template-columns: 1fr; gap: 17px; }
+  .division-card img { height: 220px; }
+}
+
 </style>
 </head>
 <body>
 <header><div class="container header">
 <a class="brand" href="#home">ODM <span>TECH CONNECT</span></a>
 <nav>
-<a href="#home">Home</a><a href="#about">About</a><a href="#services">Expertise</a><a href="#mandate">Representation</a><a href="#opportunities">Opportunities</a><a href="#contact">Contact</a><a href="../">Français</a>
+<a href="#home">Home</a><a href="#about">About</a><a href="#services">Expertise</a><a href="#divisions">Our divisions</a><a href="#mandate">Representation</a><a href="#opportunities">Opportunities</a><a href="#contact">Contact</a><a href="../">Français</a>
 </nav>
 </div></header>
 <main>
@@ -93,6 +162,84 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
 <div class="card"><h3>Commercial representation</h3><p>Presenting a company's offer and developing contacts only after receiving written authorization.</p></div>
 <div class="card"><h3>Digital support</h3><p>Website assistance, digital communication and online visibility support.</p></div>
 </div></div></section>
+
+<!-- ODM_DIVISIONS_VISUELLES_V1 -->
+<section class="division-section" id="divisions">
+ <div class="container">
+  <div class="section-head">
+   <div class="kicker">ODM business divisions</div>
+   <h2>Six divisions connecting markets and <span class="accent">developing business.</span></h2>
+   <p class="section-lead">
+    ODM TECH CONNECT is progressively developing a business and professional
+    network for companies in Guinea, West Africa and international markets.
+   </p>
+  </div>
+  <div class="division-grid">
+
+   <article class="division-card">
+    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85" alt="Electronic equipment and components for commerce" loading="lazy" decoding="async">
+    <div class="division-card-content">
+     <span class="division-number">01 / MARKETPLACE</span>
+     <h3>ODM Marketplace</h3>
+     <p>A planned space connecting buyers and suppliers, presenting product catalogues and collecting business enquiries. Marketplace features are under development.</p>
+     <span class="division-status">In development</span>
+    </div>
+   </article>
+
+   <article class="division-card">
+    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1000&q=85" alt="Professionals meeting to discuss a business project" loading="lazy" decoding="async">
+    <div class="division-card-content">
+     <span class="division-number">02 / BUSINESS</span>
+     <h3>ODM Business</h3>
+     <p>Commercial representation, prospecting, partner identification and business relationship support, subject to written authorization and agreed terms.</p>
+     <span class="division-status">In development</span>
+    </div>
+   </article>
+
+   <article class="division-card">
+    <img src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=1000&q=85" alt="Maritime freight and international trade" loading="lazy" decoding="async">
+    <div class="division-card-content">
+     <span class="division-number">03 / TRADE</span>
+     <h3>ODM Trade</h3>
+     <p>A division focused on developing commercial exchanges, import and export opportunities and distribution, according to agreements with business partners.</p>
+     <span class="division-status">In development</span>
+    </div>
+   </article>
+
+   <article class="division-card">
+    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000&q=85" alt="Warehouse and goods logistics operations" loading="lazy" decoding="async">
+    <div class="division-card-content">
+     <span class="division-number">04 / LOGISTICS</span>
+     <h3>ODM Logistics</h3>
+     <p>A planned division to support transport, storage and logistics coordination through qualified service providers and partners.</p>
+     <span class="division-status">In development</span>
+    </div>
+   </article>
+
+   <article class="division-card">
+    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=85" alt="Professional team using digital technology" loading="lazy" decoding="async">
+    <div class="division-card-content">
+     <span class="division-number">05 / DIGITAL</span>
+     <h3>ODM Digital</h3>
+     <p>Digital support, online presence, professional business presentation, digital tools and solutions that can support company development.</p>
+     <span class="division-status">In development</span>
+    </div>
+   </article>
+
+   <article class="division-card">
+    <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1000&q=85" alt="Professionals connecting through an international business network" loading="lazy" decoding="async">
+    <div class="division-card-content">
+     <span class="division-number">06 / GLOBAL NETWORK</span>
+     <h3>ODM Global Network</h3>
+     <p>Progressively developing a network of representatives, professionals and international partners, with verified information and clearly defined cooperation.</p>
+     <span class="division-status">In development</span>
+    </div>
+   </article>
+
+  </div>
+ </div>
+</section>
+
 <section id="mandate"><div class="container">
 <div class="kicker">A clear framework</div><h2>A clear mandate. <span class="accent">Defined responsibilities.</span></h2>
 <p>ODM TECH CONNECT is not a buyer, reseller or distributor of products. The initiative seeks suitable cooperation models with companies, depending on their requirements.</p>
