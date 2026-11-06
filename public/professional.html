@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Espace professionnel | ODM TECH CONNECT</title>
+<link rel="stylesheet" href="/professional.css">
+</head>
+<body>
+<header><a class="brand" href="/">ODM TECH CONNECT</a><a href="/">Accueil</a></header>
+<main>
+<section class="intro">
+<p class="eyebrow">CONNECTER · REPRÉSENTER · DÉVELOPPER</p>
+<h1>Espace professionnel</h1>
+<p>Gérez votre profil, vos produits, vos partenariats et vos demandes de devis.</p>
+</section>
+<div id="notice" role="status"></div>
+<section class="panel">
+<h2>Votre entreprise</h2>
+<div id="profile">Chargement du profil...</div>
+</section>
+<section class="panel">
+<h2>Ajouter un produit au catalogue</h2>
+<form id="product-form">
+<label>Nom du produit<input name="name" maxlength="150" required></label>
+<label>Catégorie<input name="category" maxlength="100" required></label>
+<label>Description<textarea name="description" maxlength="2000" required></textarea></label>
+<label>Prix indicatif (facultatif)<input name="price" type="number" min="0" step="0.01"></label>
+<label>Devise<input name="currency" value="USD" maxlength="5"></label>
+<button type="submit">Ajouter le produit</button>
+</form>
+</section>
+<section class="panel">
+<h2>Mes produits</h2><div id="products">Chargement...</div>
+</section>
+<section class="panel">
+<h2>Partenariats</h2><div id="partnerships">Chargement...</div>
+</section>
+<section class="panel">
+<h2>Demandes de devis</h2><div id="quotes">Chargement...</div>
+</section>
+</main>
+<footer>ODM TECH CONNECT — Plateforme professionnelle en développement.</footer>
+<script src="/professional.js" defer></script>
+</body>
+</html>

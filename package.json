@@ -1,0 +1,32 @@
+{
+  "name": "odm-tech-connect",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/app.js",
+  "scripts": {
+    "test": "node --test",
+    "start": "node server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/odm-tech-connect/ODM-TECH-CONNECT.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/odm-tech-connect/ODM-TECH-CONNECT/issues"
+  },
+  "homepage": "https://github.com/odm-tech-connect/ODM-TECH-CONNECT#readme",
+  "dependencies": {
+    "connect-pg-simple": "^10.0.0",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.3",
+    "express-session": "^1.19.0",
+    "helmet": "^8.3.0",
+    "nodemailer": "^10.3.1",
+    "pg": "^8.23.1"
+  }
+}

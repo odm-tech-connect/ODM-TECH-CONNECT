@@ -557,7 +557,7 @@ document.getElementById('odmMatchForm').addEventListener('submit',function(e){
  const d=new FormData(form);
  const body=[...d.entries()].map(([k,v])=>k+' : '+v).join('\n');
  document.getElementById('odmFeedback').textContent='Votre application e-mail va s’ouvrir. Vérifiez puis envoyez votre demande.';
- window.location.href='mailto:odm-techconnect@gmail.com?subject='+encodeURIComponent('Demande de mise en relation - ODM TECH CONNECT')+'&body='+encodeURIComponent(body);
+ window.location.href='mailto:odmtechconnect@gmail.com?subject='+encodeURIComponent('Demande de mise en relation - ODM TECH CONNECT')+'&body='+encodeURIComponent(body);
 });
 
 </script>

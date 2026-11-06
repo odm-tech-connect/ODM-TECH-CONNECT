@@ -1,0 +1,12 @@
+
+:root{font-family:Arial,sans-serif;color:#142b40;background:#f3f9fd}
+*{box-sizing:border-box}body{margin:0}header{background:#fff;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #dceaf4}
+a{color:#087dbb;text-decoration:none}.brand{font-weight:800;letter-spacing:.4px;color:#087dbb}
+main{max-width:950px;margin:30px auto;padding:0 16px}.intro{padding:30px 24px;background:linear-gradient(120deg,#dff3ff,#fff);border-radius:18px}
+.eyebrow{color:#0783c5;font-weight:bold;letter-spacing:1px;font-size:12px}h1{font-size:32px;margin:8px 0}h2{font-size:20px}
+.panel{background:#fff;margin:18px 0;padding:22px;border:1px solid #dfebf3;border-radius:14px}
+label{display:block;font-weight:600;margin:12px 0}input,textarea{display:block;width:100%;padding:12px;margin-top:6px;border:1px solid #cbdce8;border-radius:8px;font:inherit}
+textarea{min-height:100px}button{background:#0783c5;color:white;border:0;padding:12px 18px;border-radius:8px;font-weight:bold;cursor:pointer}
+.item{padding:13px 0;border-bottom:1px solid #e5edf3}.muted{color:#647b8d;font-size:14px}
+#notice{margin:12px 0;color:#087dbb;font-weight:bold}footer{text-align:center;padding:25px;color:#63788a}
+@media(max-width:600px){h1{font-size:26px}.panel{padding:16px}header{padding:15px}}

@@ -1,0 +1,37 @@
+node_modules/
+.env
+.env.*
+!.env.example
+*.db
+*.sqlite
+*.sqlite3
+*.log
+sessions/
+.DS_Store
+
+# Fichiers temporaires SQLite
+*-wal
+*-shm
+backups/
+
+# Protection ODM TECH CONNECT
+.env
+.env.*
+!.env.example
+node_modules/
+logs/
+backups/
+*.sqlite
+*.sqlite3
+*.db
+*-wal
+*-shm
+*.log
+*.tar
+.DS_Store
+
+# Sauvegardes et anciens fichiers de travail
+*.sauvegarde*
+*.avant-*
+*.backup*
+*.bak

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Espace entreprises | ODM TECH CONNECT</title>
+<link rel="stylesheet" href="/entreprises.css">
+</head>
+<body>
+<header><a href="/">ODM <span>TECH CONNECT</span></a><a href="/">Accueil</a></header>
+<main>
+<section class="intro">
+<p class="eyebrow">ESPACE PROFESSIONNEL</p>
+<h1>Bienvenue dans l'espace entreprises</h1>
+<p>Créez votre profil pour préparer vos relations commerciales avec ODM TECH CONNECT.</p>
+<p class="notice">Les comptes doivent être vérifiés par e-mail puis approuvés par l'administration. La plateforme est en cours de développement.</p>
+</section>
+<div id="message" role="status" aria-live="polite"></div>
+<section class="panels">
+<form id="registerForm" class="panel">
+<h2>Créer un compte</h2>
+<label>Nom de l'entreprise<input name="companyName" minlength="2" maxlength="120" required></label>
+<label>E-mail<input name="email" type="email" maxlength="254" required></label>
+<label>Pays<input name="country" minlength="2" maxlength="100" required></label>
+<label>Secteur<input name="sector" minlength="2" maxlength="100" required></label>
+<label>Mot de passe<input name="password" type="password" minlength="10" maxlength="128" required></label>
+<button type="submit">Créer mon compte</button>
+<small>Un lien de vérification sera envoyé à votre adresse e-mail.</small>
+</form>
+<form id="loginForm" class="panel">
+<h2>Connexion</h2>
+<label>E-mail<input name="email" type="email" required></label>
+<label>Mot de passe<input name="password" type="password" required></label>
+<button type="submit">Se connecter</button>
+<a href="/professional">Accéder à l'espace professionnel</a>
+</form>
+</section>
+<footer>ODM TECH CONNECT · Connecter. Représenter. Développer.</footer>
+</main>
+<script src="/entreprises.js" defer></script>
+</body>
+</html>
