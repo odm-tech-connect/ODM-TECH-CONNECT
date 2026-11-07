@@ -1,0 +1,166 @@
+{
+  "date": "2026-11-05T20:50:22.888Z",
+  "checks": [
+    {
+      "name": "Fichier server/app.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Fichier server/db.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Fichier server/routes/auth.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Fichier server/routes/partnerships.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Fichier server/routes/professional.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Fichier public/professional.html",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Fichier public/professional.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Fichier public/professional.css",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Fichier public/admin.html",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Fichier index.html",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Fichier en/index.html",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Syntaxe server/app.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Syntaxe server/routes/professional.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Syntaxe server/routes/auth.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Syntaxe server/routes/partnerships.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Syntaxe public/professional.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Intégrité SQLite",
+      "ok": true,
+      "detail": "[{\"integrity_check\":\"ok\"}]"
+    },
+    {
+      "name": "Clés étrangères",
+      "ok": true,
+      "detail": "0 anomalie(s)"
+    },
+    {
+      "name": "Table users",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Table companies",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Table partnership_requests",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Table contact_requests",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Table products",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Table quote_requests",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Compte administrateur conservé",
+      "ok": true,
+      "detail": "1 compte(s) administrateur(s)"
+    },
+    {
+      "name": "Route professionnelle montée",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Page professionnelle montée",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Anciennes routes conservées",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Serveur accessible",
+      "ok": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "name": "Catalogue public accessible",
+      "ok": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "name": "Profil protégé sans connexion",
+      "ok": true,
+      "detail": "HTTP 401"
+    },
+    {
+      "name": "Page professionnelle accessible",
+      "ok": true,
+      "detail": "HTTP 200"
+    }
+  ],
+  "failures": []
+}

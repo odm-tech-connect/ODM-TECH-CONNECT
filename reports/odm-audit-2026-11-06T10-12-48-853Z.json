@@ -1,0 +1,351 @@
+{
+  "project": "ODM TECH CONNECT",
+  "date": "2026-11-06T10:12:41.187Z",
+  "mode": "SECURE READ-ONLY AUDIT",
+  "checks": [
+    {
+      "name": "Fichier package.json",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Fichier package-lock.json",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Fichier .env.example",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Fichier .gitignore",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Fichier index.html",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Fichier en/index.html",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Fichier server/app.js",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Fichier server/postgres.js",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Fichier server/routes/auth.js",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Fichier server/routes/admin.js",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Fichier server/routes/companies.js",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Fichier server/routes/contact.js",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Fichier server/routes/partnerships.js",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Fichier server/routes/professional.js",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Fichier public/admin.html",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Fichier public/entreprises.html",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Fichier public/professional.html",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Syntaxe JavaScript",
+      "status": "OK",
+      "detail": "20 fichiers contrôlés"
+    },
+    {
+      "name": "Dépendance express",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Dépendance express-session",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Dépendance connect-pg-simple",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Dépendance pg",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Dépendance dotenv",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Dépendance helmet",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Dépendance express-rate-limit",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Dépendance nodemailer",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Commande de démarrage",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Tests automatisés",
+      "status": "WARNING",
+      "detail": "Le script npm test doit être finalisé"
+    },
+    {
+      "name": "Variable DATABASE_URL",
+      "status": "OK",
+      "detail": "Seule la présence est vérifiée"
+    },
+    {
+      "name": "Variable SESSION_SECRET",
+      "status": "OK",
+      "detail": "Seule la présence est vérifiée"
+    },
+    {
+      "name": "Variable SMTP_HOST",
+      "status": "OK",
+      "detail": "Seule la présence est vérifiée"
+    },
+    {
+      "name": "Variable SMTP_PORT",
+      "status": "OK",
+      "detail": "Seule la présence est vérifiée"
+    },
+    {
+      "name": "Variable SMTP_USER",
+      "status": "OK",
+      "detail": "Seule la présence est vérifiée"
+    },
+    {
+      "name": "Variable SMTP_PASS",
+      "status": "OK",
+      "detail": "Seule la présence est vérifiée"
+    },
+    {
+      "name": "Variable SMTP_FROM",
+      "status": "WARNING",
+      "detail": "Seule la présence est vérifiée"
+    },
+    {
+      "name": "Variable APP_BASE_URL",
+      "status": "WARNING",
+      "detail": "Seule la présence est vérifiée"
+    },
+    {
+      "name": "Longueur du secret de session",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "URL publique HTTPS",
+      "status": "WARNING",
+      "detail": ""
+    },
+    {
+      "name": "Configuration e-mail complète",
+      "status": "WARNING",
+      "detail": ""
+    },
+    {
+      "name": "Protection administrateur",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Protection entreprise",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Régénération de session",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Limitation des connexions",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Cookie HTTPOnly",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Cookie Secure en production",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Helmet présent",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Propriété des produits",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Accès aux devis limité",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Destinataire des partenariats",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Partenariats en attente uniquement",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Catalogue public filtré",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Etat Git",
+      "status": "OK",
+      "detail": "55 éléments modifiés ou non suivis"
+    },
+    {
+      "name": ".env non suivi par Git",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Vérification des fichiers préparés",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Backend sur GitHub",
+      "status": "WARNING",
+      "detail": "Aucun fichier serveur sur origin/main"
+    },
+    {
+      "name": "Connexion PostgreSQL",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Tables PostgreSQL",
+      "status": "OK",
+      "detail": "8 tables trouvées"
+    },
+    {
+      "name": "Table users",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Table companies",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Table email_verifications",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Table contact_requests",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Table partnership_requests",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Table products",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Table quote_requests",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "name": "Table odm_sessions",
+      "status": "OK",
+      "detail": ""
+    }
+  ],
+  "database": {
+    "connected": true,
+    "tables": [
+      "companies",
+      "contact_requests",
+      "email_verifications",
+      "odm_sessions",
+      "partnership_requests",
+      "products",
+      "quote_requests",
+      "users"
+    ]
+  },
+  "summary": {
+    "passed": 59,
+    "warnings": 6,
+    "errors": 0,
+    "javascript_files": 20
+  }
+}

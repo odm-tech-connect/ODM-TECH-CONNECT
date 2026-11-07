@@ -1,0 +1,518 @@
+{
+  "date": "2026-11-05T19:53:42.688Z",
+  "node": "v24.17.0",
+  "errors": 0,
+  "warnings": 2,
+  "results": [
+    {
+      "level": "INFO",
+      "label": "Répertoire",
+      "detail": "/data/data/com.termux/files/home/ODM-TECH-CONNECT"
+    },
+    {
+      "level": "INFO",
+      "label": "Version Node",
+      "detail": "v24.17.0"
+    },
+    {
+      "level": "INFO",
+      "label": "Version npm",
+      "detail": "11.17.0"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": "index.html"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": "en/index.html"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": "package.json"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": "package-lock.json"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": ".env"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": ".env.example"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": ".gitignore"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": "server/app.js"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": "server/db.js"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": "server/database.js"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": "server/security.js"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": "server/session-store.js"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": "server/migrate.js"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": "server/routes/auth.js"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": "server/routes/companies.js"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": "server/routes/contact.js"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": "server/routes/partnerships.js"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": "server/routes/admin.js"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": "public/admin.html"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": "public/admin.js"
+    },
+    {
+      "level": "OK",
+      "label": "Fichier présent",
+      "detail": "public/admin.css"
+    },
+    {
+      "level": "OK",
+      "label": "package.json valide",
+      "detail": ""
+    },
+    {
+      "level": "INFO",
+      "label": "Dépendances déclarées",
+      "detail": "dotenv, express, express-rate-limit, express-session, helmet, nodemailer"
+    },
+    {
+      "level": "OK",
+      "label": "Dépendance installée",
+      "detail": "express"
+    },
+    {
+      "level": "OK",
+      "label": "Dépendance installée",
+      "detail": "express-session"
+    },
+    {
+      "level": "OK",
+      "label": "Dépendance installée",
+      "detail": "express-rate-limit"
+    },
+    {
+      "level": "OK",
+      "label": "Dépendance installée",
+      "detail": "helmet"
+    },
+    {
+      "level": "OK",
+      "label": "Dépendance installée",
+      "detail": "dotenv"
+    },
+    {
+      "level": "OK",
+      "label": "Dépendance installée",
+      "detail": "nodemailer"
+    },
+    {
+      "level": "OK",
+      "label": "Syntaxe JavaScript",
+      "detail": "audit-avant-construction.js"
+    },
+    {
+      "level": "OK",
+      "label": "Syntaxe JavaScript",
+      "detail": "audit-complet.js"
+    },
+    {
+      "level": "OK",
+      "label": "Syntaxe JavaScript",
+      "detail": "controle-global.js"
+    },
+    {
+      "level": "OK",
+      "label": "Syntaxe JavaScript",
+      "detail": "integrer-divisions.js"
+    },
+    {
+      "level": "OK",
+      "label": "Syntaxe JavaScript",
+      "detail": "odm-check.js"
+    },
+    {
+      "level": "OK",
+      "label": "Syntaxe JavaScript",
+      "detail": "public/admin.js"
+    },
+    {
+      "level": "OK",
+      "label": "Syntaxe JavaScript",
+      "detail": "server/app.js"
+    },
+    {
+      "level": "OK",
+      "label": "Syntaxe JavaScript",
+      "detail": "server/create-admin.js"
+    },
+    {
+      "level": "OK",
+      "label": "Syntaxe JavaScript",
+      "detail": "server/database.js"
+    },
+    {
+      "level": "OK",
+      "label": "Syntaxe JavaScript",
+      "detail": "server/db.js"
+    },
+    {
+      "level": "OK",
+      "label": "Syntaxe JavaScript",
+      "detail": "server/migrate.js"
+    },
+    {
+      "level": "OK",
+      "label": "Syntaxe JavaScript",
+      "detail": "server/routes/admin.js"
+    },
+    {
+      "level": "OK",
+      "label": "Syntaxe JavaScript",
+      "detail": "server/routes/auth.js"
+    },
+    {
+      "level": "OK",
+      "label": "Syntaxe JavaScript",
+      "detail": "server/routes/companies.js"
+    },
+    {
+      "level": "OK",
+      "label": "Syntaxe JavaScript",
+      "detail": "server/routes/contact.js"
+    },
+    {
+      "level": "OK",
+      "label": "Syntaxe JavaScript",
+      "detail": "server/routes/partnerships.js"
+    },
+    {
+      "level": "OK",
+      "label": "Syntaxe JavaScript",
+      "detail": "server/security.js"
+    },
+    {
+      "level": "OK",
+      "label": "Syntaxe JavaScript",
+      "detail": "server/session-store.js"
+    },
+    {
+      "level": "INFO",
+      "label": "Routes détectées",
+      "detail": "server/routes/auth.js: POST, POST, GET, POST"
+    },
+    {
+      "level": "INFO",
+      "label": "Routes détectées",
+      "detail": "server/routes/companies.js: GET, GET"
+    },
+    {
+      "level": "INFO",
+      "label": "Routes détectées",
+      "detail": "server/routes/contact.js: POST"
+    },
+    {
+      "level": "INFO",
+      "label": "Routes détectées",
+      "detail": "server/routes/partnerships.js: POST"
+    },
+    {
+      "level": "INFO",
+      "label": "Routes détectées",
+      "detail": "server/routes/admin.js: GET, GET, PATCH, GET, PATCH, GET, PATCH"
+    },
+    {
+      "level": "OK",
+      "label": "Route montée",
+      "detail": "authRoutes"
+    },
+    {
+      "level": "OK",
+      "label": "Route montée",
+      "detail": "contactRoutes"
+    },
+    {
+      "level": "OK",
+      "label": "Route montée",
+      "detail": "adminRoutes"
+    },
+    {
+      "level": "OK",
+      "label": "Route montée",
+      "detail": "partnershipRoutes"
+    },
+    {
+      "level": "OK",
+      "label": "Route montée",
+      "detail": "companiesRoutes"
+    },
+    {
+      "level": "OK",
+      "label": "Fonction authentification",
+      "detail": "Inscription"
+    },
+    {
+      "level": "OK",
+      "label": "Fonction authentification",
+      "detail": "Connexion"
+    },
+    {
+      "level": "OK",
+      "label": "Fonction authentification",
+      "detail": "Profil de session"
+    },
+    {
+      "level": "OK",
+      "label": "Fonction authentification",
+      "detail": "Déconnexion"
+    },
+    {
+      "level": "OK",
+      "label": "Intégrité SQLite",
+      "detail": "ok"
+    },
+    {
+      "level": "OK",
+      "label": "Clés étrangères",
+      "detail": "0 anomalie(s)"
+    },
+    {
+      "level": "INFO",
+      "label": "Tables présentes",
+      "detail": "companies, contact_requests, email_verifications, partnership_requests, sessions, sqlite_sequence, users"
+    },
+    {
+      "level": "OK",
+      "label": "Structure table users",
+      "detail": "id, email, password_hash, role, email_verified, created_at"
+    },
+    {
+      "level": "INFO",
+      "label": "Nombre de lignes users",
+      "detail": "1"
+    },
+    {
+      "level": "OK",
+      "label": "Structure table companies",
+      "detail": "id, user_id, name, country, sector, description, website, approval_status, created_at"
+    },
+    {
+      "level": "INFO",
+      "label": "Nombre de lignes companies",
+      "detail": "0"
+    },
+    {
+      "level": "OK",
+      "label": "Structure table email_verifications",
+      "detail": "id, user_id, token_hash, expires_at, created_at"
+    },
+    {
+      "level": "INFO",
+      "label": "Nombre de lignes email_verifications",
+      "detail": "0"
+    },
+    {
+      "level": "OK",
+      "label": "Structure table partnership_requests",
+      "detail": "id, sender_company_id, receiver_company_id, message, status, created_at"
+    },
+    {
+      "level": "INFO",
+      "label": "Nombre de lignes partnership_requests",
+      "detail": "0"
+    },
+    {
+      "level": "OK",
+      "label": "Structure table contact_requests",
+      "detail": "id, request_type, company_name, country, contact_name, email, sector, collaboration, message, language, consent_at, status, created_at"
+    },
+    {
+      "level": "INFO",
+      "label": "Nombre de lignes contact_requests",
+      "detail": "0"
+    },
+    {
+      "level": "OK",
+      "label": "Structure table sessions",
+      "detail": "session_id, data, expires_at"
+    },
+    {
+      "level": "INFO",
+      "label": "Nombre de lignes sessions",
+      "detail": "1"
+    },
+    {
+      "level": "INFO",
+      "label": "Migrations enregistrées",
+      "detail": "Aucune table de migrations ou aucune migration"
+    },
+    {
+      "level": "OK",
+      "label": "Dossier de sauvegarde",
+      "detail": "backups (9 élément(s))"
+    },
+    {
+      "level": "OK",
+      "label": "Dossier de sauvegarde",
+      "detail": "backups/base-donnees (1 élément(s))"
+    },
+    {
+      "level": "OK",
+      "label": "Dossier de sauvegarde",
+      "detail": "backups/avant-systeme-utilisateurs (1 élément(s))"
+    },
+    {
+      "level": "OK",
+      "label": "Hachage des mots de passe (scrypt)",
+      "detail": ""
+    },
+    {
+      "level": "OK",
+      "label": "Comparaison sécurisée des mots de passe",
+      "detail": ""
+    },
+    {
+      "level": "OK",
+      "label": "Limitation des tentatives de connexion",
+      "detail": ""
+    },
+    {
+      "level": "OK",
+      "label": "Renouvellement de session à la connexion",
+      "detail": ""
+    },
+    {
+      "level": "OK",
+      "label": "Cookie HttpOnly",
+      "detail": ""
+    },
+    {
+      "level": "OK",
+      "label": "Politique SameSite",
+      "detail": ""
+    },
+    {
+      "level": "OK",
+      "label": "Protection HTTP Helmet",
+      "detail": ""
+    },
+    {
+      "level": "OK",
+      "label": "Stockage de sessions personnalisé",
+      "detail": ""
+    },
+    {
+      "level": "ATTENTION",
+      "label": "Envoi réel des e-mails",
+      "detail": "À vérifier/configurer si absent"
+    },
+    {
+      "level": "ATTENTION",
+      "label": "Protection CSRF",
+      "detail": "Présence non détectée automatiquement"
+    },
+    {
+      "level": "OK",
+      "label": "Profil entreprise modifiable",
+      "detail": ""
+    },
+    {
+      "level": "OK",
+      "label": "Liste des partenariats utilisateur",
+      "detail": ""
+    },
+    {
+      "level": "OK",
+      "label": "Réponse utilisateur aux partenariats",
+      "detail": ""
+    },
+    {
+      "level": "À CRÉER / VÉRIFIER",
+      "label": "Catalogue de produits",
+      "detail": ""
+    },
+    {
+      "level": "À CRÉER / VÉRIFIER",
+      "label": "Demandes de devis",
+      "detail": ""
+    },
+    {
+      "level": "À CRÉER / VÉRIFIER",
+      "label": "Commandes",
+      "detail": ""
+    },
+    {
+      "level": "À CRÉER / VÉRIFIER",
+      "label": "Espace représentant",
+      "detail": ""
+    },
+    {
+      "level": "À CRÉER / VÉRIFIER",
+      "label": "Espace professionnel HTML",
+      "detail": ""
+    },
+    {
+      "level": "INFO",
+      "label": "État Git",
+      "detail": "?? .env.example\n?? .gitignore\n?? PY\n?? ajout_odm.py\n?? audit-avant-construction.js\n?? audit-complet.js\n?? controle-global.js\n?? en/index.html.avant-api-20261103-224549\n?? en/index.html.avant-images\n?? en/index.html.avant-seo-20261102-083911\n?? en/index_avant_modules_20261102.html\n?? index.html.avant-api-20261103-224549\n?? index.html.avant-seo-20261102-083911\n?? index_avant_integration_fondateur.html\n?? index_avant_modules_20261102.html\n?? index_sauvegarde.html\n?? index_seo_backup.html\n?? integrer-divisions.js\n?? odm-check.js\n?? package-lock.json\n?? package.json\n?? package.json.sauvegarde-20261104-082937\n?? public/\n?? server/"
+    }
+  ]
+}
