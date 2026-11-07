@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://odm-tech-connect.github.io/ODM-TECH-CONNECT/sitemap.xml
