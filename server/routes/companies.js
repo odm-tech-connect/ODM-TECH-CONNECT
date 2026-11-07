@@ -1,11 +1,8 @@
-'use strict';
-
-const express = require('express');
-const { pool } = require('../postgres');
+import express from 'express';
+import { pool } from '../postgres.js';
 
 const router = express.Router();
 
-// ANNUAIRE PUBLIC DES ENTREPRISES APPROUVÉES
 router.get('/', async (req, res) => {
   try {
     const search = typeof req.query.search === 'string'
@@ -95,12 +92,11 @@ router.get('/', async (req, res) => {
   } catch (error) {
     console.error('Erreur annuaire :', error.message);
     return res.status(500).json({
-      error: 'Impossible de charger l’annuaire.'
+      error: 'Impossible de charger l annuaire.'
     });
   }
 });
 
-// FICHE PUBLIQUE D'UNE ENTREPRISE
 router.get('/:id', async (req, res) => {
   try {
     const id = Number(req.params.id);
@@ -149,4 +145,4 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

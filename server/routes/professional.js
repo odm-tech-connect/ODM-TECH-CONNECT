@@ -1,8 +1,6 @@
-'use strict';
-
-const express = require('express');
-const { rateLimit } = require('express-rate-limit');
-const { pool } = require('../postgres');
+import express from 'express';
+import { rateLimit } from 'express-rate-limit';
+import { pool } from '../postgres.js';
 
 const router = express.Router();
 
@@ -59,7 +57,6 @@ function validText(value, max) {
     value.trim().length <= max;
 }
 
-/* Catalogue public : accessible sans connexion. */
 router.get('/catalogue', async (req, res) => {
   try {
     const result = await pool.query(`
@@ -437,4 +434,4 @@ router.get('/quotes', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

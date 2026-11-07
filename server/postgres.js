@@ -1,6 +1,4 @@
-'use strict';
-
-const { Pool } = require('pg');
+import { Pool } from 'pg';
 
 if (!process.env.DATABASE_URL) {
   throw new Error('DATABASE_URL absent');
@@ -33,4 +31,4 @@ async function withTransaction(callback) {
   }
 }
 
-module.exports = { pool, withTransaction };
+export { pool, withTransaction };

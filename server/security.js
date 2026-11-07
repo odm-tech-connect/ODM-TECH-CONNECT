@@ -1,9 +1,9 @@
-const crypto = require('node:crypto');
-const { promisify } = require('node:util');
+import crypto from 'node:crypto';
+import { promisify } from 'node:util';
 
 const scrypt = promisify(crypto.scrypt);
 
-async function hashPassword(password) {
+export async function hashPassword(password) {
   if (typeof password !== 'string' || password.length < 12 || password.length > 128) {
     throw new Error('Le mot de passe doit contenir entre 12 et 128 caractères.');
   }
@@ -19,7 +19,7 @@ async function hashPassword(password) {
   return `scrypt$32768$8$1$${salt.toString('hex')}$${key.toString('hex')}`;
 }
 
-async function verifyPassword(password, storedHash) {
+export async function verifyPassword(password, storedHash) {
   try {
     const parts = storedHash.split('$');
 
@@ -46,5 +46,3 @@ async function verifyPassword(password, storedHash) {
     return false;
   }
 }
-
-module.exports = { hashPassword, verifyPassword };

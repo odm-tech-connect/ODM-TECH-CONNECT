@@ -1,8 +1,6 @@
-'use strict';
-
-const express = require('express');
-const { rateLimit } = require('express-rate-limit');
-const { pool } = require('../postgres');
+import express from 'express';
+import { rateLimit } from 'express-rate-limit';
+import { pool } from '../postgres.js';
 
 const router = express.Router();
 
@@ -130,4 +128,4 @@ router.post('/', contactLimiter, async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

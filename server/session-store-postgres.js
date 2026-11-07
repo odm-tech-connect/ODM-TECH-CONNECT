@@ -1,8 +1,6 @@
-'use strict';
-
-const session = require('express-session');
-const connectPgSimple = require('connect-pg-simple');
-const { pool } = require('./postgres');
+import session from 'express-session';
+import connectPgSimple from 'connect-pg-simple';
+import { pool } from './postgres.js';
 
 const PgSessionStore = connectPgSimple(session);
 
@@ -14,4 +12,4 @@ const store = new PgSessionStore({
   ttl: 2 * 60 * 60
 });
 
-module.exports = store;
+export default store;

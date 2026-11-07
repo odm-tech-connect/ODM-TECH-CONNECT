@@ -1,33 +1,26 @@
-'use strict';
-
-const express = require('express');
-const crypto = require('node:crypto');
-const nodemailer = require('nodemailer');
-const { rateLimit } = require('express-rate-limit');
-const { hashPassword, verifyPassword } = require('../security');
-const { pool, withTransaction } = require('../postgres');
+import express from 'express';
+import crypto from 'node:crypto';
+import { rateLimit } from 'express-rate-limit';
+import { hashPassword, verifyPassword } from '../security.js';
+import { pool, withTransaction } from '../postgres.js';
 
 const router = express.Router();
 
 async function sendVerificationEmail(destination, token) {
-  const required = [
-    'SMTP_HOST',
-    'SMTP_PORT',
-    'SMTP_USER',
-    'SMTP_PASS',
-    'SMTP_FROM',
-    'APP_BASE_URL'
-  ];
+  const apiKey = process.env.RESEND_API_KEY;
 
-  const missing = required.filter((key) => !process.env[key]);
-
-  if (missing.length) {
+  if (!apiKey) {
     const error = new Error('Configuration e-mail incomplète.');
     error.code = 'SMTP_NOT_CONFIGURED';
     throw error;
   }
 
-  const base = process.env.APP_BASE_URL.replace(/\/$/, '');
+  const base = (process.env.APP_BASE_URL || '').replace(/\/$/, '');
+
+  if (!base) {
+    throw new Error('APP_BASE_URL invalide.');
+  }
+
   let parsed;
 
   try {
@@ -44,44 +37,42 @@ async function sendVerificationEmail(destination, token) {
     throw new Error('APP_BASE_URL doit utiliser HTTPS.');
   }
 
-  const port = Number(process.env.SMTP_PORT);
-
-  if (!Number.isInteger(port) || port < 1 || port > 65535) {
-    throw new Error('SMTP_PORT invalide.');
-  }
-
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port,
-    secure: process.env.SMTP_SECURE === 'true',
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS
-    }
-  });
-
   const link = new URL('/entreprises.html', base);
   link.searchParams.set('token', token);
 
-  await transporter.sendMail({
-    from: process.env.SMTP_FROM,
-    to: destination,
-    subject: 'Vérification de votre adresse – ODM TECH CONNECT',
-    text:
-      'Bonjour,\n\n' +
-      'Pour vérifier votre adresse e-mail, ouvrez ce lien :\n' +
-      link.toString() +
-      '\n\nCe lien expire dans 24 heures.\n\nODM TECH CONNECT',
-    html:
-      '<div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;color:#10243a">' +
-      '<h2 style="color:#168bd2">ODM TECH CONNECT</h2>' +
-      '<p>Bonjour,</p>' +
-      '<p>Confirmez votre adresse e-mail en cliquant sur le bouton ci-dessous.</p>' +
-      '<p><a href="' + link.toString() +
-      '" style="display:inline-block;background:#168bd2;color:white;padding:14px 20px;border-radius:7px;text-decoration:none">Vérifier mon adresse e-mail</a></p>' +
-      '<p>Ce lien expire dans 24 heures.</p>' +
-      '<p>Connecter. Représenter. Développer.</p></div>'
+  const from = process.env.EMAIL_FROM || 'ODM TECH CONNECT <noreply@resend.dev>';
+
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      from,
+      to: destination,
+      subject: 'Vérification de votre adresse – ODM TECH CONNECT',
+      text:
+        'Bonjour,\n\n' +
+        'Pour vérifier votre adresse e-mail, ouvrez ce lien :\n' +
+        link.toString() +
+        '\n\nCe lien expire dans 24 heures.\n\nODM TECH CONNECT',
+      html:
+        '<div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;color:#10243a">' +
+        '<h2 style="color:#168bd2">ODM TECH CONNECT</h2>' +
+        '<p>Bonjour,</p>' +
+        '<p>Confirmez votre adresse e-mail en cliquant sur le bouton ci-dessous.</p>' +
+        '<p><a href="' + link.toString() +
+        '" style="display:inline-block;background:#168bd2;color:white;padding:14px 20px;border-radius:7px;text-decoration:none">Vérifier mon adresse e-mail</a></p>' +
+        '<p>Ce lien expire dans 24 heures.</p>' +
+        '<p>Connecter. Représenter. Développer.</p></div>'
+    })
   });
+
+  if (!response.ok) {
+    const body = await response.text().catch(() => '');
+    throw new Error(`Erreur envoi email: ${response.status} ${body}`);
+  }
 }
 
 const registerLimiter = rateLimit({
@@ -98,7 +89,6 @@ const loginLimiter = rateLimit({
   legacyHeaders: false
 });
 
-// INSCRIPTION D'UNE ENTREPRISE
 router.post('/register', registerLimiter, async (req, res) => {
   let createdUserId = null;
 
@@ -177,7 +167,6 @@ router.post('/register', registerLimiter, async (req, res) => {
     try {
       await sendVerificationEmail(cleanEmail, verificationToken);
     } catch (mailError) {
-      // Évite de laisser un compte incomplet si l'envoi échoue.
       await pool.query(
         `DELETE FROM users
          WHERE id = $1 AND email_verified = FALSE`,
@@ -189,7 +178,7 @@ router.post('/register', registerLimiter, async (req, res) => {
     }
 
     return res.status(201).json({
-      message: 'Compte créé. Vérification de l’adresse e-mail en attente.'
+      message: 'Compte créé. Vérification de l adresse e-mail en attente.'
     });
 
   } catch (error) {
@@ -217,7 +206,6 @@ router.post('/register', registerLimiter, async (req, res) => {
   }
 });
 
-// VÉRIFICATION DE L'ADRESSE E-MAIL
 router.post('/verify-email', async (req, res) => {
   try {
     const token = req.body && req.body.token;
@@ -295,7 +283,6 @@ router.post('/verify-email', async (req, res) => {
   }
 });
 
-// CONNEXION
 router.post('/login', loginLimiter, async (req, res) => {
   try {
     const { email, password } = req.body || {};
@@ -342,7 +329,7 @@ router.post('/login', loginLimiter, async (req, res) => {
     if (user.role === 'company') {
       if (user.email_verified !== true) {
         return res.status(403).json({
-          error: 'Veuillez d’abord vérifier votre adresse e-mail.'
+          error: 'Veuillez d abord vérifier votre adresse e-mail.'
         });
       }
 
@@ -355,7 +342,7 @@ router.post('/login', loginLimiter, async (req, res) => {
       if (user.approval_status !== 'approved') {
         return res.status(403).json({
           error: user.approval_status === 'rejected'
-            ? 'Votre demande d’inscription a été refusée.'
+            ? 'Votre demande d inscription a été refusée.'
             : 'Votre entreprise est en attente de validation.'
         });
       }
@@ -373,7 +360,7 @@ router.post('/login', loginLimiter, async (req, res) => {
         console.error('Erreur création session :', error.message);
 
         return res.status(500).json({
-          error: 'Impossible d’ouvrir la session.'
+          error: 'Impossible d ouvrir la session.'
         });
       }
 
@@ -409,7 +396,6 @@ router.post('/login', loginLimiter, async (req, res) => {
   }
 });
 
-// VÉRIFICATION DE LA SESSION
 router.get('/me', (req, res) => {
   if (!req.session || !req.session.user) {
     return res.status(401).json({
@@ -422,7 +408,6 @@ router.get('/me', (req, res) => {
   });
 });
 
-// DÉCONNEXION
 router.post('/logout', (req, res) => {
   const cookieOptions = {
     path: '/',
@@ -456,4 +441,4 @@ router.post('/logout', (req, res) => {
   });
 });
 
-module.exports = router;
+export default router;

@@ -1,7 +1,5 @@
-'use strict';
-
-const express = require('express');
-const { pool } = require('../postgres');
+import express from 'express';
+import { pool } from '../postgres.js';
 
 const router = express.Router();
 
@@ -14,7 +12,7 @@ function requireAdmin(req, res, next) {
 
   if (req.session.user.role !== 'admin') {
     return res.status(403).json({
-      error: 'Accès réservé à l’administration.'
+      error: 'Accès réservé à l administration.'
     });
   }
 
@@ -103,7 +101,7 @@ router.patch('/companies/:id/status', async (req, res) => {
 
       if (verification.rowCount === 0 || verification.rows[0].email_verified !== true) {
         return res.status(403).json({
-          error: 'Vérifiez l’adresse e-mail de cette entreprise avant de l’approuver.'
+          error: 'Vérifiez l adresse e-mail de cette entreprise avant de l approuver.'
         });
       }
     }
@@ -257,4 +255,4 @@ router.patch('/partnerships/:id/status', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

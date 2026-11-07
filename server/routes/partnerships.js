@@ -1,8 +1,6 @@
-'use strict';
-
-const express = require('express');
-const { rateLimit } = require('express-rate-limit');
-const { pool } = require('../postgres');
+import express from 'express';
+import { rateLimit } from 'express-rate-limit';
+import { pool } from '../postgres.js';
 
 const router = express.Router();
 
@@ -141,9 +139,9 @@ router.post('/', partnershipLimiter, async (req, res) => {
     }
 
     return res.status(500).json({
-      error: 'Impossible d’envoyer la demande de partenariat.'
+      error: 'Impossible d envoyer la demande de partenariat.'
     });
   }
 });
 
-module.exports = router;
+export default router;

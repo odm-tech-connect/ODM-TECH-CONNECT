@@ -1,0 +1,16 @@
+{
+  "name": "odm-tech-connect",
+  "main": "server/app.js",
+  "compatibility_date": "2026-11-07",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  },
+  "vars": {
+    "NODE_ENV": "production",
+    "APP_BASE_URL": "https://odm-tech-connect.damadoudiallo901.workers.dev"
+  }
+}

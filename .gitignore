@@ -35,3 +35,4 @@ backups/
 *.avant-*
 *.backup*
 *.bak
+.env

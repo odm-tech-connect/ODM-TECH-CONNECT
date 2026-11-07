@@ -1,18 +1,16 @@
-require('dotenv').config();
+import { httpServerHandler } from 'cloudflare:node';
+import express from 'express';
+import helmet from 'helmet';
+import session from 'express-session';
+import rateLimit from 'express-rate-limit';
 
-const express = require('express');
-const helmet = require('helmet');
-const session = require('express-session');
-const rateLimit = require('express-rate-limit');
-const crypto = require('node:crypto');
-const path = require('node:path');
-
-const authRoutes = require('./routes/auth');
-const contactRoutes = require('./routes/contact');
-const adminRoutes = require('./routes/admin');
-const partnershipRoutes = require('./routes/partnerships');
-const companiesRoutes = require('./routes/companies');
-const PostgreSQLSessionStore = require('./session-store-postgres');
+import authRoutes from './routes/auth.js';
+import contactRoutes from './routes/contact.js';
+import adminRoutes from './routes/admin.js';
+import partnershipRoutes from './routes/partnerships.js';
+import companiesRoutes from './routes/companies.js';
+import professionalRoutes from './routes/professional.js';
+import PostgreSQLSessionStore from './session-store-postgres.js';
 
 const app = express();
 
@@ -27,16 +25,6 @@ if (!process.env.SESSION_SECRET || process.env.SESSION_SECRET.length < 64) {
 app.disable('x-powered-by');
 app.use(helmet());
 app.use(express.json({ limit: '20kb' }));
-
-app.use(express.static(path.join(__dirname, '..', 'public'), {
-  dotfiles: 'deny',
-  index: false,
-  maxAge: 0
-}));
-
-app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'public', 'admin.html'));
-});
 
 app.use(session({
   store: PostgreSQLSessionStore,
@@ -57,8 +45,7 @@ app.use('/api/contact', contactRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/partnerships', partnershipRoutes);
 app.use('/api/companies', companiesRoutes);
-app.use('/api/professional', require('./routes/professional'));
-app.use('/professional', (req, res) => res.sendFile(require('path').join(__dirname, '..', 'public', 'professional.html')));
+app.use('/api/professional', professionalRoutes);
 
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -74,16 +61,12 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-app.get('/', (req, res) => {
-  res.json({
-    message: 'Bienvenue sur le serveur ODM TECH CONNECT'
-  });
-});
-
 app.locals.loginLimiter = loginLimiter;
 
-const PORT = Number(process.env.PORT) || 3000;
-
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Serveur ODM TECH CONNECT démarré sur le port ${PORT}`);
+app.use((req, res) => {
+  res.status(404).json({ error: 'Route non trouvée.' });
 });
+
+app.listen(3000);
+
+export default httpServerHandler({ port: 3000 });
