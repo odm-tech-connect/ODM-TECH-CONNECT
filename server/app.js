@@ -24,20 +24,32 @@ app.disable('x-powered-by');
 app.use(helmet());
 app.use(express.json({ limit: '20kb' }));
 
-app.get("/api/health",(req,res)=>{res.json({service:"ODM TECH CONNECT",status:"online"});});
-app.use(session({
-  store: PostgreSQLSessionStore,
-  name: 'odm.sid',
-  secret: sessionSecret,
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict',
-    maxAge: 1000 * 60 * 60 * 2
-  }
-}));
+app.get('/api/health', (req, res) => {
+  res.json({ service: 'ODM TECH CONNECT', status: 'online' });
+});
+
+app.use((req, res, next) => {
+  session({
+    store: PostgreSQLSessionStore,
+    name: 'odm.sid',
+    secret: sessionSecret,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 1000 * 60 * 60 * 2
+    }
+  })(req, res, (err) => {
+    if (err) {
+      console.error('Session error:', err.message);
+      next();
+    } else {
+      next();
+    }
+  });
+});
 
 app.use('/api/auth', authRoutes);
 app.use('/api/contact', contactRoutes);
@@ -53,17 +65,15 @@ const loginLimiter = rateLimit({
   legacyHeaders: false
 });
 
-app.get('/api/health', (req, res) => {
-  res.json({
-    service: 'ODM TECH CONNECT',
-    status: 'online'
-  });
-});
-
 app.locals.loginLimiter = loginLimiter;
 
 app.use((req, res) => {
   res.status(404).json({ error: 'Route non trouvée.' });
+});
+
+app.use((err, req, res, next) => {
+  console.error('Server error:', err.message);
+  res.status(500).json({ error: 'Erreur serveur.' });
 });
 
 app.listen(3000);
