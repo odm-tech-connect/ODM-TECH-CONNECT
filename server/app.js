@@ -16,6 +16,7 @@ import ordersRoutes from './routes/orders.js';
 import reviewsRoutes from './routes/reviews.js';
 import aiRoutes from './routes/ai.js';
 import notificationsRoutes from './routes/notifications.js';
+import paypalRoutes from './routes/paypal.js';
 import PostgreSQLSessionStore from './session-store-postgres.js';
 
 const app = express();
@@ -69,6 +70,7 @@ app.use('/api/orders', ordersRoutes);
 app.use('/api/reviews', reviewsRoutes);
 app.use('/api/ai', aiRoutes);
 app.use('/api/notifications', notificationsRoutes);
+app.use('/api/paypal', paypalRoutes);
 
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
