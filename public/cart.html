@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon Panier — ODM TECH CONNECT</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#f4f6f9;color:#10243a}
+.header{background:#168bd2;color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
+.header a{color:#fff;text-decoration:none;margin-left:16px}
+.container{max-width:800px;margin:20px auto;padding:0 16px}
+.cart-item{background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;border:1px solid #e0e6ee}
+.cart-qty button{width:32px;height:32px;border:1px solid #d0d8e4;background:#fff;border-radius:6px;cursor:pointer;font-size:16px}
+.cart-qty span{min-width:30px;text-align:center;font-weight:600;margin:0 8px}
+.btn-remove{background:none;border:none;color:#e04040;cursor:pointer;font-size:14px;padding:8px}
+.cart-total{background:#fff;border-radius:12px;padding:20px;margin-top:16px;border:1px solid #e0e6ee}
+.checkout-btn{width:100%;padding:16px;background:#168bd2;color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;margin-top:12px}
+select,input,textarea{width:100%;padding:12px;border:1px solid #d0d8e4;border-radius:8px;font-size:14px;margin-bottom:8px}
+.empty{text-align:center;padding:40px;color:#6b7a90}
+</style>
+</head>
+<body>
+<div class="header"><h1>🛒 Mon Panier</h1><a href="/">← Retour</a></div>
+<div class="container">
+<div id="cartItems"></div>
+<div id="cartTotal" style="display:none">
+<div class="cart-total">
+<h2>Commande</h2>
+<textarea id="shippingAddress" placeholder="Adresse de livraison..." rows="3"></textarea>
+<input type="text" id="shippingCountry" placeholder="Pays">
+<select id="paymentMethod"><option value="">-- Paiement --</option><option value="stripe">💳 Carte bancaire</option><option value="flutterwave">📱 Mobile Money</option><option value="wave">🌊 Wave</option><option value="orange_money">🟠 Orange Money</option><option value="bank_transfer">🏦 Virement</option></select>
+<button class="checkout-btn" onclick="checkout()">📦 Valider la commande</button>
+</div>
+</div>
+</div>
+<script>
+async function loadCart(){try{const r=await fetch('/api/cart');const items=await r.json();const c=document.getElementById('cartItems');if(!items.length){c.innerHTML='<div class="empty">Panier vide. <a href="/" style="color:#168bd2">Voir les produits</a></div>';document.getElementById('cartTotal').style.display='none';return;}let h='';items.forEach(i=>{h+=`<div class="cart-item"><div><h3>Produit #${i.product_id}</h3><p>${new Date(i.created_at).toLocaleDateString('fr-FR')}</p></div><div class="cart-qty"><button onclick="upd(${i.id},${i.quantity-1})">-</button><span>${i.quantity}</span><button onclick="upd(${i.id},${i.quantity+1})">+</button></div><button class="btn-remove" onclick="rm(${i.id})">🗑️</button></div>`;});c.innerHTML=h;document.getElementById('cartTotal').style.display='block';}catch(e){}}
+async function upd(id,q){if(q<1)return;await fetch('/api/cart/'+id,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({quantity:q})});loadCart();}
+async function rm(id){await fetch('/api/cart/'+id,{method:'DELETE'});loadCart();}
+async function checkout(){const a=document.getElementById('shippingAddress').value.trim();const c=document.getElementById('shippingCountry').value.trim();const p=document.getElementById('paymentMethod').value;if(!a||!c){alert('Adresse et pays requis.');return;}if(!p){alert('Choisissez un paiement.');return;}const r=await fetch('/api/orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({shippingAddress:a,shippingCountry:c,paymentMethod:p})});const d=await r.json();if(r.ok){alert('Commande créée !');location.href='/dashboard';}else{alert(d.error||'Erreur');}}
+loadCart();
+</script>
+</body>
+</html>

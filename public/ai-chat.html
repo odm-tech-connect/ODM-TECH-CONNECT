@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assistant IA — ODM TECH CONNECT</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#f4f6f9;color:#10243a}
+.header{background:linear-gradient(135deg,#168bd2,#0a5a8e);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.header a{color:#fff;text-decoration:none;font-size:14px}
+.chat-container{max-width:800px;margin:20px auto;padding:0 16px;height:75vh;display:flex;flex-direction:column}
+.chat-box{flex:1;overflow-y:auto;background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid #e0e6ee}
+.msg{max-width:80%;padding:12px 16px;border-radius:12px;margin-bottom:10px;font-size:14px;line-height:1.5;white-space:pre-wrap}
+.msg.user{background:#168bd2;color:#fff;margin-left:auto}
+.msg.ai{background:#f0f3f7}
+.typing{display:none;text-align:center;color:#6b7a90;font-size:13px;padding:8px}
+.typing.active{display:block}
+.input-area{display:flex;gap:8px;padding-bottom:12px}
+.input-area input{flex:1;padding:14px;border:1px solid #d0d8e4;border-radius:10px;font-size:14px}
+.input-area button{padding:14px 28px;background:#168bd2;color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:600}
+.lang-toggle button{padding:6px 14px;border:1px solid #d0d8e4;background:#fff;border-radius:20px;cursor:pointer;font-size:12px;margin-bottom:8px}
+.lang-toggle button.active{background:#168bd2;color:#fff;border-color:#168bd2}
+.suggestions{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.suggestion{padding:8px 14px;background:#e8f1fb;border-radius:20px;font-size:12px;cursor:pointer;color:#0a5a8e}
+</style>
+</head>
+<body>
+<div class="header"><h1>🤖 Assistant IA</h1><a href="/">← Retour</a></div>
+<div class="chat-container">
+<div class="lang-toggle"><button class="active" id="langFr" onclick="setLang('fr')">🇫🇷 Français</button><button id="langEn" onclick="setLang('en')">🇬🇧 English</button></div>
+<div class="suggestions"><div class="suggestion" onclick="ss('Comment trouver une entreprise en Afrique ?')">Comment trouver une entreprise ?</div><div class="suggestion" onclick="ss('Comment vendre mes produits ?')">Comment vendre mes produits ?</div><div class="suggestion" onclick="ss('Comment créer un partenariat ?')">Comment créer un partenariat ?</div></div>
+<div class="chat-box" id="chatBox"></div>
+<div class="typing" id="typing">🤖 L'assistant rédige...</div>
+<div class="input-area"><input type="text" id="msgInput" placeholder="Posez votre question..." onkeypress="if(event.key==='Enter')send()"><button onclick="send()">Envoyer</button></div>
+</div>
+<script>
+let lang='fr',sid=null;
+function setLang(l){lang=l;document.getElementById('langFr').classList.toggle('active',l==='fr');document.getElementById('langEn').classList.toggle('active',l==='en');}
+function ss(t){document.getElementById('msgInput').value=t;send();}
+async function send(){const inp=document.getElementById('msgInput');const m=inp.value.trim();if(!m)return;inp.value='';document.querySelector('.suggestions').style.display='none';add('user',m);document.getElementById('typing').classList.add('active');try{const r=await fetch('/api/ai/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:m,language:lang,sessionId:sid})});const d=await r.json();if(r.ok){add('ai',d.reply);sid=d.sessionId;}else{add('ai','Erreur: '+(d.error||''));}}catch(e){add('ai','Erreur de connexion.');}document.getElementById('typing').classList.remove('active');}
+function add(t,x){const b=document.getElementById('chatBox');const d=document.createElement('div');d.className='msg '+t;d.textContent=x;b.appendChild(d);b.scrollTop=b.scrollHeight;}
+</script>
+</body>
+</html>

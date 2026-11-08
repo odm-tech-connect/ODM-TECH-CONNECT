@@ -11,6 +11,11 @@ import partnershipRoutes from './routes/partnerships.js';
 import companiesRoutes from './routes/companies.js';
 import professionalRoutes from './routes/professional.js';
 import messagesRoutes from './routes/messages.js';
+import cartRoutes from './routes/cart.js';
+import ordersRoutes from './routes/orders.js';
+import reviewsRoutes from './routes/reviews.js';
+import aiRoutes from './routes/ai.js';
+import notificationsRoutes from './routes/notifications.js';
 import PostgreSQLSessionStore from './session-store-postgres.js';
 
 const app = express();
@@ -59,6 +64,11 @@ app.use('/api/partnerships', partnershipRoutes);
 app.use('/api/companies', companiesRoutes);
 app.use('/api/professional', professionalRoutes);
 app.use('/api/messages', messagesRoutes);
+app.use('/api/cart', cartRoutes);
+app.use('/api/orders', ordersRoutes);
+app.use('/api/reviews', reviewsRoutes);
+app.use('/api/ai', aiRoutes);
+app.use('/api/notifications', notificationsRoutes);
 
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,

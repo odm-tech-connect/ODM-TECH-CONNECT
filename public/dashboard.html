@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tableau de bord — ODM TECH CONNECT</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#f4f6f9;color:#10243a}
+.header{background:linear-gradient(135deg,#168bd2,#0a5a8e);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
+.header a{color:#fff;text-decoration:none;margin-left:12px;font-size:14px}
+.container{max-width:1000px;margin:20px auto;padding:0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:20px}
+.card{background:#fff;border-radius:12px;padding:20px;border:1px solid #e0e6ee}
+.card h3{color:#168bd2;font-size:14px;margin-bottom:8px}
+.card .number{font-size:32px;font-weight:700}
+.quick-links{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.quick-link{padding:12px 20px;background:#fff;border:1px solid #e0e6ee;border-radius:10px;text-decoration:none;color:#168bd2;font-size:14px;font-weight:600}
+.order-card{background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid #e0e6ee}
+.status-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600}
+.status-pending{background:#fff3cd;color:#856404}
+.status-paid{background:#d4edda;color:#155724}
+.status-shipped{background:#d1ecf1;color:#0c5460}
+.status-delivered{background:#d4edda;color:#155724}
+.status-cancelled{background:#f8d7da;color:#721c24}
+.notif-item{padding:12px;border-bottom:1px solid #f0f3f7}
+.notif-item.unread{background:#e8f1fb;border-radius:8px}
+.tabs{display:flex;gap:8px;margin-bottom:20px}
+.tab{padding:10px 20px;background:#fff;border:1px solid #e0e6ee;border-radius:8px;cursor:pointer;font-size:14px}
+.tab.active{background:#168bd2;color:#fff;border-color:#168bd2}
+</style>
+</head>
+<body>
+<div class="header"><h1>📊 Tableau de bord</h1><div><a href="/">Accueil</a><a href="/cart.html">🛒 Panier</a><a href="/ai-chat.html">🤖 IA</a><a href="#" onclick="lg();return false">Déconnexion</a></div></div>
+<div class="container">
+<div class="quick-links"><a href="/cart.html" class="quick-link">🛒 Panier</a><a href="/messages.html" class="quick-link">💬 Messages</a><a href="/ai-chat.html" class="quick-link">🤖 Assistant IA</a><a href="/catalogue" class="quick-link">📦 Catalogue</a></div>
+<div class="grid">
+<div class="card"><h3>📦 Commandes</h3><div class="number" id="oc">0</div></div>
+<div class="card"><h3>🔔 Notifications</h3><div class="number" id="nc">0</div></div>
+<div class="card"><h3>🛒 Dans le panier</h3><div class="number" id="cc">0</div></div>
+</div>
+<div class="tabs"><div class="tab active" onclick="st('o',this)">📦 Commandes</div><div class="tab" onclick="st('n',this)">🔔 Notifications</div><div class="tab" onclick="st('s',this)">💰 Mes ventes</div></div>
+<div id="to"></div><div id="tn" style="display:none"></div><div id="ts" style="display:none"></div>
+</div>
+<script>
+function st(t,e){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));e.classList.add('active');document.getElementById('to').style.display=t==='o'?'block':'none';document.getElementById('tn').style.display=t==='n'?'block':'none';document.getElementById('ts').style.display=t==='s'?'block':'none';}
+async function lo(){try{const r=await fetch('/api/orders');const d=await r.json();document.getElementById('oc').textContent=d.length;const c=document.getElementById('to');if(!d.length){c.innerHTML='<p style="color:#6b7a90;text-align:center;padding:20px">Aucune commande.</p>';return;}d.forEach(o=>{const sl={pending:'En attente',paid:'Payée',shipped:'Expédiée',delivered:'Livrée',cancelled:'Annulée'}[o.status]||o.status;c.innerHTML+=`<div class="order-card"><div style="display:flex;justify-content:space-between"><h3>Commande #${o.id}</h3><span class="status-badge status-${o.status}">${sl}</span></div><p style="color:#6b7a90;font-size:14px">Vendeur: ${o.seller_name||o.seller_email||'N/A'}</p><p style="font-weight:600;margin-top:8px">Total: ${o.total_amount} ${o.currency}</p><p style="font-size:12px;color:#aaa;margin-top:4px">${new Date(o.created_at).toLocaleString('fr-FR')}</p></div>`;});}catch(e){}}
+async function ls(){try{const r=await fetch('/api/orders?role=seller');const d=await r.json();const c=document.getElementById('ts');if(!d.length){c.innerHTML='<p style="color:#6b7a90;text-align:center;padding:20px">Aucune vente.</p>';return;}d.forEach(o=>{const sl={pending:'En attente',paid:'Payée',shipped:'Expédiée',delivered:'Livrée',cancelled:'Annulée'}[o.status]||o.status;c.innerHTML+=`<div class="order-card"><div style="display:flex;justify-content:space-between"><h3>Vente #${o.id}</h3><span class="status-badge status-${o.status}">${sl}</span></div><p style="color:#6b7a90;font-size:14px">Acheteur: ${o.buyer_name||o.buyer_email||'N/A'}</p><p style="font-weight:600;margin-top:8px">Total: ${o.total_amount} ${o.currency}</p>${o.status==='pending'?`<button onclick="us(${o.id},'paid')" style="margin-top:8px;padding:8px 16px;background:#168bd2;color:#fff;border:none;border-radius:6px;cursor:pointer">Marquer payée</button>`:''}</div>`;});}catch(e){}}
+async function us(id,s){await fetch('/api/orders/'+id+'/status',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({status:s})});ls();}
+async function ln(){try{const r=await fetch('/api/notifications');const d=await r.json();document.getElementById('nc').textContent=d.unreadCount||0;const c=document.getElementById('tn');if(!d.notifications.length){c.innerHTML='<p style="color:#6b7a90;text-align:center;padding:20px">Aucune notification.</p>';return;}d.notifications.forEach(n=>{c.innerHTML+=`<div class="notif-item ${!n.is_read?'unread':''}" onclick="mr(${n.id})"><div style="font-weight:600;font-size:14px">${n.title}</div><div style="font-size:13px;color:#6b7a90;margin-top:4px">${n.content||''}</div><div style="font-size:11px;color:#aaa;margin-top:4px">${new Date(n.created_at).toLocaleString('fr-FR')}</div></div>`;});}catch(e){}}
+async function mr(id){await fetch('/api/notifications/'+id+'/read',{method:'PATCH'});ln();}
+async function lc(){try{const r=await fetch('/api/cart');const d=await r.json();document.getElementById('cc').textContent=d.length;}catch(e){}}
+async function lg(){await fetch('/api/auth/logout',{method:'POST'});location.href='/';}
+lo();ls();ln();lc();
+</script>
+</body>
+</html>
