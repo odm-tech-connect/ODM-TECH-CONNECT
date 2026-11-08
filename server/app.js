@@ -10,6 +10,7 @@ import adminRoutes from './routes/admin.js';
 import partnershipRoutes from './routes/partnerships.js';
 import companiesRoutes from './routes/companies.js';
 import professionalRoutes from './routes/professional.js';
+import messagesRoutes from './routes/messages.js';
 import PostgreSQLSessionStore from './session-store-postgres.js';
 
 const app = express();
@@ -57,6 +58,7 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/partnerships', partnershipRoutes);
 app.use('/api/companies', companiesRoutes);
 app.use('/api/professional', professionalRoutes);
+app.use('/api/messages', messagesRoutes);
 
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
