@@ -17,6 +17,7 @@ import reviewsRoutes from './routes/reviews.js';
 import aiRoutes from './routes/ai.js';
 import notificationsRoutes from './routes/notifications.js';
 import paypalRoutes from './routes/paypal.js';
+import { handleAutoReply } from './auto-reply.js';
 import PostgreSQLSessionStore from './session-store-postgres.js';
 
 const app = express();
